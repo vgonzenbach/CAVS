@@ -36,6 +36,14 @@ To use these scripts, clone this repository and run the scripts in the following
 6. `make_vein_mask.R`
 7.  `clean_output.sh`
 
+## Download scripts
+
+A few scripts that are not part of the main pipeline, but that assist in downloading are included. These are:
+
+- `download_data.py`: Use the Box API to download the zipped folders in a nested directory structure.
+- `unzip_data.sh`: Unzips files after downloading
+- `filter_data.sh`: Filters processed data and copies relevant files to a new directory.
+
 ## Requirements
 
 These scripts require the following software:
