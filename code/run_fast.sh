@@ -2,7 +2,7 @@
 module load fsl
 cd $(dirname $0)/..
 
-for t1 in $(find bidsdata -name '*desc-brain_T1w.nii.gz'); do 
+for t1 in $(find bidsdata -name 't1_ss.nii.gz'); do 
 
     sub=$(echo $t1 | cut -d/ -f2)
     out_file=$(dirname $t1)/${sub}_label-WM_mask.nii.gz
