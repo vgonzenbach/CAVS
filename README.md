@@ -24,6 +24,15 @@ This repository contains code for preprocessing and analyzing the CAVS (Cerebral
 
 - `clean_output.sh`: cleans up the output of previous scripts by renaming and moving files generated during image processing to their proper BIDS-compliant names and directory structure. It also removes unused files - this ensures dataset is as light as possible to speed up uploads to Box.
 
+
+## Helper scripts
+
+- `download_data.py`: Use the Box API to download the zipped folders in a nested directory structure.
+- `unzip_data.sh`: Unzips files.
+- `filter_data.sh`: Filters processed data and copies relevant files to a new directory.
+
+
+
 ## Usage
 
 To use these scripts, clone this repository and run the scripts in the following order:
