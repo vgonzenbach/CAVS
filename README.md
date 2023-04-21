@@ -2,6 +2,11 @@
 
 This repository contains code for preprocessing and analyzing the CAVS (Cerebral Aneurysm Vulnerability Study) neuroimaging dataset.
 
+The purpose of this project is to generate three kinds of masks from dataset containing T1, FLAIR and T2* for 410 Multiple Sclerosis (MS) patients:
+- Lesions masks, which result from performing mimosa on preprocessed images.
+- White matter masks, resulting from running FSL FAST.
+- Vein mask, resulting from running an original pipeline on a Frangi filter coming from a T2*.
+
 ## Scripts
 
 - `bidsify_data.sh`: converts the input dataset to comply with the Brain Imaging Data Structure (BIDS) format. It creates a new directory called "bidsdata1" and organizes the data in subdirectories according to the BIDS specification. The T1, T2 FLAIR, and T2* post gadolinium contrast MRI images are renamed and moved to the appropriate directory structure.
@@ -12,15 +17,15 @@ This repository contains code for preprocessing and analyzing the CAVS (Cerebral
 
 - `run_fast.sh`: performs tissue segmentation using FSL's FAST algorithm on T1 MRI images. The resulting white matter masks are saved as NIfTI files.
 
-- `frangi.R`: computes frangi filters for T2* MRI images using the ANTsR and c3d packages. The resulting vein masks are saved as NIfTI files.
+- `frangi.R`: computes Frangi filters for T2* MRI images using the ANTsR and c3d packages. The resulting vein masks are saved as NIfTI files.
 
-- `run_frangi.sh`: runs the frangi filter and vein mask generation pipeline on T2* MRI images in the input dataset. It saves the resulting vein masks as NIfTI files.
+- `run_frangi.sh`: runs the Frangi filter and vein mask generation pipeline on T2* MRI images in the input dataset. It saves the resulting vein masks as NIfTI files.
 
-- `stat_frangis.R`: computes the quantile distribution of frangi filters for each subject in the input dataset and saves the results as a CSV file.
+- `stat_frangis.R`: computes the quantile distribution of Frangi filters for each subject in the input dataset and saves the results as a CSV file.
 
-- `eda_frangi.R`: performs exploratory data analysis on frangi filters in the CAVS dataset. It generates two graphs: one showing the quantile distribution of frangi filters in the CAVS data, and the other showing the same distribution after rescaling each image to a range between 0 and 1. This script was used to select an appropiate treshold. 
+- `eda_frangi.R`: performs exploratory data analysis on Frangi filters in the CAVS dataset. It generates two graphs: one showing the quantile distribution of Frangi filters in the CAVS data, and the other showing the same distribution after rescaling each image to a range between 0 and 1. This script was used to select an appropiate treshold. 
 
-- `make_vein_mask.R`: generates vein masks from the frangi filter images using a thresholding approach. The resulting vein masks are saved as NIfTI files.
+- `make_vein_mask.R`: generates vein masks from the Frangi filter images using a thresholding approach. The resulting vein masks are saved as NIfTI files.
 
 - `clean_output.sh`: cleans up the output of previous scripts by renaming and moving files generated during image processing to their proper BIDS-compliant names and directory structure. It also removes unused files - this ensures dataset is as light as possible to speed up uploads to Box.
 
